@@ -1,18 +1,15 @@
 .profile {
   padding: 75px 20px 50px 20px;
 }
-
 .profileWrapper {
   flex: 9;
   padding: 20px;
 }
-
 .profileTitle {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-
 .profileTitleUpdate {
   font-size: 30px;
   margin-bottom: 20px;
@@ -24,26 +21,22 @@
   font-size: 12px;
   cursor: pointer;
 }
-
 .profileForm {
   display: flex;
   flex-direction: column;
 }
-
 .profilePP {
   display: flex;
   align-items: center;
   margin-top: 10px;
   margin-bottom: 10px;
 }
-
 .profilePP > img {
   height: 70px;
   width: 70px;
   border-radius: 8px;
   object-fit: cover;
 }
-
 .profilePPIcon {
   width: 25px;
   height: 25px;
@@ -58,11 +51,9 @@
   background-color: lightcoral;
   cursor: pointer;
 }
-
 .profilePPButton:focus {
   outline-style: none;
 }
-
 .profileForm > label {
   font-size: 20px;
   margin-top: 20px;

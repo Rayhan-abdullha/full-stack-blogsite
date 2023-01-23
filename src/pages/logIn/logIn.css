@@ -46,10 +46,6 @@
   background-color: indianred;
 }
 
-
-
-
-
 @media screen and (max-width: 400px) {
   .login {
     background:#1d293a;

@@ -30,7 +30,6 @@ export const db = [
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),
   },
-
   {
     newId: shortid.generate(),
     userName: "Ismail Abdullah",
