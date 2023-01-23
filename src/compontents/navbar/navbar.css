@@ -79,7 +79,6 @@ li.nav-item.nav-link.profilePic {
     background: #f9f9f9;
     box-shadow: 0 4px 10px 0px #84afcb;
 }
-
 span.navbar-toggler-icon.navReverse {
     transform: rotate(90deg);
     transition: .5s;
@@ -87,7 +86,6 @@ span.navbar-toggler-icon.navReverse {
 span.navbar-toggler-icon.navReverse2 {
     transition: .5s;
 }
-
 .showWrapper2 {
     background: #fff;
     position: absolute;
