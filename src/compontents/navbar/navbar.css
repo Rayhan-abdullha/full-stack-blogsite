@@ -1,0 +1,122 @@
+.navbar-toggler:focus {
+    box-shadow: none;
+}
+.navbar-light .navbar-toggler {
+    color: rgba(0,0,0,.55);
+    border-color: none;
+}
+.navbar-light .navbar-nav .nav-link {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 500;
+    color: #000;
+    font-size: 19px;
+    text-transform: capitalize;
+    letter-spacing: -.025em!important;
+}
+.navbar-light .navbar-nav .nav-link:hover {
+    color: #dc3545;
+    transition: .3s
+}
+a.navbar-brand h3 {
+    font-weight: 700;
+    font-style: italic;
+}
+span.logoB {
+    color: #dc3545;
+}
+nav.navbar.navbar-expand-lg.navbar-light.bg-white.sticky-top {
+    padding: 15px 0;
+    height: 90px;
+    border-bottom: 1px solid #ddd;
+}
+.navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover {
+    color:#dc3545;
+    font-weight: bold;
+}
+.singleMenu {
+    font-size: 18px;
+    width: 100px;
+    font-weight: 300;
+    cursor: pointer;
+    background: black;
+    height: 35px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: .3s;
+}
+.singleMenu a {
+    text-align: center;
+    border-radius: 50px;
+    text-decoration: none;
+    color: #ececec;
+    transition: .3s;
+}
+.logout {
+    margin-right: 20px;
+    font-weight: 700;
+    cursor: pointer;
+}
+.singleMenu:hover {
+    background-color: #dc3545;
+    transition: .3s;
+}
+.signInImg {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+}
+.menuList {
+    display: flex;
+    gap: 10px;
+}
+li.nav-item.nav-link.profilePic {
+    border: 1px solid #e8e8e8;
+    border-radius: 50px;
+    background: #f9f9f9;
+    box-shadow: 0 4px 10px 0px #84afcb;
+}
+
+span.navbar-toggler-icon.navReverse {
+    transform: rotate(90deg);
+    transition: .5s;
+}
+span.navbar-toggler-icon.navReverse2 {
+    transition: .5s;
+}
+
+.showWrapper2 {
+    background: #fff;
+    position: absolute;
+    transition: .7s;
+    z-index: 999;
+    overflow: hidden;
+    top: 70px;
+    left: 0;
+    right: 0;
+    padding: 0 0 20px 0
+}
+@media screen and (max-width: 992px) {
+    li.nav-item.nav-link.profilePic {
+        padding: 8px;
+    }
+    .showWrapper {
+        background: #fff;
+        position: absolute;
+        transition: .5s;
+        z-index: 999;
+        overflow: hidden;
+        top: -300px;
+        left: 0;
+        right: 0;
+    }
+    nav.navbar.navbar-expand-lg.navbar-light.bg-white.sticky-top {
+        z-index: 999;
+    }
+    .logout {
+        margin-right: 0px;
+    }
+}

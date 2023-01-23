@@ -1,0 +1,78 @@
+.post-section {
+    height: 100vh;
+    max-width: 600px;
+    margin: auto
+}
+.title {
+    text-align: center;
+    color: #fff;
+    font-size: 23px;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+.wrapper {
+    padding: 20px;
+    font-family: 'Arimo', sans-serif;
+    background: #1d293a;
+    border-radius: 5px;
+    margin: 0 15px;
+    overflow: hidden;
+    margin-top: 100px;
+}
+.categorySelect p {
+    color: #fff;
+    font-weight: 500;
+    font-size: 16px;
+    margin-bottom: 0;
+}
+select#category {
+    outline: 0;
+    background: #6c757d;
+    color: #fff;
+    text-transform: capitalize;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+input#title {
+    border: 0;
+    padding: 20px;
+    outline: 0;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+textarea#description {
+    border-radius: 5px;
+    outline: 0;
+    border: 0;
+    padding: 20px;
+}  
+.addImg {
+    color: #fff;
+    border: 1px solid #4e4e4eed;
+    padding: 20px;
+    margin-top: 10px;
+    cursor: pointer;
+    overflow: hidden;
+}
+.postInput {
+    display: flex;
+    flex-direction: column;
+}
+input.postAvator {
+    float: right;
+    background:#dc3545;
+    border: none;
+    outline: 0;
+    width: 100%;
+}
+button.submitBtn {
+    width: 100%;
+    padding: 7px 0;
+    background: #6c757d;
+    border: none;
+    margin-top: 20px;
+    color: #fff;
+}
+button.submitBtn:hover {
+    background-color: #647e94;
+}
