@@ -21,7 +21,7 @@ export default function Posts() {
     }
   }
   return (
-    <div className="posts">
+    <div className="posts mb-5">
       {post.length !== 0 ? (
         post.map((posts) => <Post key={posts._id} post={posts} />)
       ) : isFetching ? (

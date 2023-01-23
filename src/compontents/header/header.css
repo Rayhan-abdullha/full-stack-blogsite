@@ -6,10 +6,3 @@
     width: 100%;
     border-radius: 5px;
 }
-
-@media screen and (max-width: 600px) {
-    .introImg img {
-       height: 380px;
-       width: auto;
-    }
-}

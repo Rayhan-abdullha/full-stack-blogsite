@@ -9,7 +9,7 @@ export default function Post({post}) {
     <div className="postImages">
     { post.photo ? (<img
       className="postImg"
-      src={PF + post.photo}
+      src={PF + post.photo ? PF+post.photo : blog}
       alt=""
     />) : (<div className="postImages">
       <img

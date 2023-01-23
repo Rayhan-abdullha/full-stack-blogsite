@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import Header from "../../compontents/header/Header";
 import Posts from "../../compontents/posts/Posts";
-import "./home.css";
 import { axiosInstance } from "../../config";
 import { Context } from "../../context/Contex";
 import Categories from "../../compontents/categories/Categories";
@@ -28,7 +27,7 @@ export default function Home() {
     <React.Fragment>
       <Header />
       <div className="container home">
-        <h2 className="posts">Read Posts</h2>
+        <h2 className="posts_section">Read Posts</h2>
         <p className="post_sub">Enjoy all your favourite Blogs</p>
         <Categories />
         {!loading ? (

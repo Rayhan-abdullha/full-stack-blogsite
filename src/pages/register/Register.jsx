@@ -43,26 +43,26 @@ export default function Register() {
         <form onSubmit={handleSubmit} className="registerForm">
           <label>Username</label>
           <input 
-            className={`registerInput ${error && "errorMsg"}`} 
+            className={`loginInput ${error && "errorMsg"}`} 
             type="text" 
             placeholder="Enter your username..."
             onChange={(e) => setUserName(e.target.value)}
           />
           <label>Email</label>
           <input 
-            className={`registerInput ${error && "errorMsg"}`}  
+            className={`loginInput ${error && "errorMsg"}`}  
             type="email" 
             placeholder="Enter your email..." 
             onChange={(e) => setEmail(e.target.value)}
           />
           <label>Password</label>
           <input 
-            className={`registerInput ${error && "errorMsg"}`} 
+            className={`loginInput ${error && "errorMsg"}`} 
             type="password"
             placeholder="Enter your password..."
             onChange={(e) => setPassword(e.target.value)}
           />
-          <button className="registerButton">Register</button>
+          <button className="loginButton">Register</button>
         </form>
       </div>
   

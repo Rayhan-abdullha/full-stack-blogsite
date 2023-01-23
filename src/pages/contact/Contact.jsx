@@ -1,23 +1,56 @@
-import React from 'react'
-import { FaFacebook, FaGithub, FaTwitter, FaLinkedin } from 'react-icons/fa';
+import React from "react";
+import { FaFacebook, FaGithub, FaTwitter, FaLinkedin } from "react-icons/fa";
+import './contact.css'
+const contactInfo = [
+  {
+    name: "Facebook",
+    color: "#fff",
+    background: "#45629f",
+    link: "https://www.facebook.com/profile.php?id=100069345762386",
+    icon: <FaFacebook />,
+  },
+  {
+    name: "Github",
+    color: "#fff",
+    background: "Black",
+    link: "https://github.com/Rayhan-abdullha",
+    icon: <FaGithub />,
+  },
+  {
+    name: "Twitter",
+    color: "#fff",
+    background: "#1ab7ea",
+    link: "https://twitter.com/rayhan_abdullha",
+    icon: <FaTwitter />,
+  },
+  {
+    name: "Linkedin",
+    color: "#fff",
+    background: "#c61d23",
+    link: "https://www.linkedin.com/in/rayhan-abdullah-100956189/",
+    icon: <FaLinkedin />,
+  },
+];
+
 export default function Contact() {
-    return (
-        <div className="contact">
-            <h1>Feel free to Contact Us</h1>
-            <div className="socialIcon">
-                <a href="https://www.facebook.com/profile.php?id=100069345762386" target="_blank">
-                    <i className="topIcon"><FaFacebook /></i>
-                </a>
-                <a href="https://github.com/Rayhan-abdullha" target="_blank">
-                    <i className="topIcon"><FaGithub/></i>
-                </a>
-                <a href="https://twitter.com/rayhan_abdullha" target="_blank">
-                     <i className="topIcon"><FaTwitter /></i>
-                </a>
-                <a href="https://www.linkedin.com/in/rayhan-abdullah-100956189/" target="_blank">
-                    <i className="topIcon"><FaLinkedin /></i>
-                </a>
-            </div>
-        </div>
-    )
+  return (
+    <div className="container contact">
+      <div className="socialIcon">
+        <h3 className="mb-4">Stay Connected</h3>
+        {contactInfo.map((item, index) => (
+          <div key={index} style={{background: `${item.background}`, color: `${item.color}` }}>
+            <a
+              href={item.link}
+              target="_blank"
+            >
+              <i style={{color: `${item.color}`}} className="topIcon">
+                {item.icon}
+              </i>
+            </a>
+            <span>Follow Us</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 }

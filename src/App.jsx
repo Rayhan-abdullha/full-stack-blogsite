@@ -29,8 +29,8 @@ export default function App() {
                     <Route path="/post/:postId" element={<SinglePost/>}/>
                     <Route path="*" element={<NotFound/>}/>
                 </Routes>
-                <Footer/>
             </BrowserRouter>
+                <Footer/>
             <ToastContainer />
         </React.Fragment>
     )
