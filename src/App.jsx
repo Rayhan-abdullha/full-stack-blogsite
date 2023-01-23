@@ -26,7 +26,7 @@ export default function App() {
                     <Route path="/register" element={user ? <Home /> : < Register/>} />
                     <Route path="/login" element={user ? <Home/> : <LogIn/>}/>
                     <Route path="/profile" element={user ? <Profile/> : <Register/>}/>
-                    <Route path="/post/:postId" element={<SinglePost/>}/>
+                    <Route path="/post/:id" element={<SinglePost/>}/>
                     <Route path="*" element={<NotFound/>}/>
                 </Routes>
             </BrowserRouter>

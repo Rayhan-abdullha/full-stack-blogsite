@@ -4,24 +4,26 @@ import Posts from "../../compontents/posts/Posts";
 import { axiosInstance } from "../../config";
 import { Context } from "../../context/Contex";
 import Categories from "../../compontents/categories/Categories";
+
 export default function Home() {
-  const { dispatch, allPosts } = useContext(Context);
+  const { dispatch, allPosts, isFetching } = useContext(Context);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    if (allPosts.length === 0) {
-      const fetchPost = async () => {
-        try {
-          setLoading(true);
-          const res = await axiosInstance.get("/posts");
-          dispatch({ type: "FETCH_POST", payload: res.data });
-          setLoading(false);
-        } catch (e) {
-          setLoading(false);
-        }
-      };
-      fetchPost();
-    }
+      if (!isFetching){
+        const fetchPost = async () => {
+          try {
+            setLoading(true);
+            const res = await axiosInstance.get("/posts");
+            dispatch({ type: "FETCH_POST", payload: res.data });
+            setLoading(false);
+          } catch (e) {
+            setLoading(false);
+            dispatch({type: 'FETCH_FAIL'})
+          }
+        };
+        fetchPost();
+      }
   }, []);
   return (
     <React.Fragment>
@@ -52,6 +54,9 @@ export default function Home() {
             </button>
           </div>
         )}
+        {
+          loading && <Posts/>
+        }
       </div>
     </React.Fragment>
   );

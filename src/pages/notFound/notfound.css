@@ -5,11 +5,13 @@
     align-items: center
 }
 .link {
+    transition: .3s;
     text-decoration: none;
     color: black;
 }
-.link:hover {
-    text-decoration-line: underline;
+a.link:hover {
+    color: #dc3545;
+    transition: .3s;
 }
 
 .notFound {

@@ -5,7 +5,7 @@ import { useContext } from "react";
 import { Context } from "../../context/Contex";
 import { queryTransform } from "../../utils/utils";
 export default function Posts() {
-  const { isFetching, allPosts } = useContext(Context);
+  const { isFetching, allPosts, error } = useContext(Context);
   const location = useLocation();
   let path = location.search;
   path = queryTransform(path);
@@ -20,15 +20,20 @@ export default function Posts() {
       post = cat;
     }
   }
+
+  // server error
+  // network error
+  // first loading
   return (
     <div className="posts mb-5">
-      {post.length !== 0 ? (
-        post.map((posts) => <Post key={posts._id} post={posts} />)
-      ) : isFetching ? (
+      {post.length === 0 && (
         <h4 className="empty_post">Empty! There Have No Posts!!</h4>
+      )}
+      {!error ? (
+        post.map((posts) => <Post key={posts._id || posts.newId} post={posts} />)
       ) : (
         <div className="networkIssue">
-          <p className="d-block">Network Issues!</p>
+          <p className="d-block">Server Issues!</p>
           <p className="d-block">Please Reload!</p>
         </div>
       )}

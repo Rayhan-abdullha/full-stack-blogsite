@@ -46,6 +46,11 @@ const Reducer = (state, action) => {
             postData: action.payload,
             isFetching: true
           };
+          case "FETCH_FAIL":
+          return {
+            ...state,
+            error: true
+          };
           case "FETCH_CAT":
           return {
             ...state,

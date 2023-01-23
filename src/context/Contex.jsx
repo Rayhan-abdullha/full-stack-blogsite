@@ -1,8 +1,9 @@
 import { createContext, useReducer, useEffect } from "react";
+import { db } from "../db/db";
 import Reducer from "./Reducer";
 
 const INITIAL_STATE = {
-    postData: [],
+    postData: [...db],
     categorie: [],
     user: JSON.parse(localStorage.getItem("user")) || null,
     isFetching: false,
