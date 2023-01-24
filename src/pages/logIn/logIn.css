@@ -47,9 +47,9 @@
 }
 
 @media screen and (max-width: 400px) {
-  .login {
-    background:#1d293a;
-  }
+  .registerWrapper, .registerInput, .registerButton {
+    width: 80%;
+}
   .loginInput {
     width: 100%;
   }
