@@ -4,11 +4,13 @@ import "./logIn.css";
 import { Context } from "../../context/Contex";
 import { toast } from "react-toastify";
 import { axiosInstance } from "../../config";
+import { useNavigate } from "react-router-dom";
 
 export default function LogIn() {
   const userRef = useRef();
   const passwordRef = useRef();
   const { dispatch } = useContext(Context);
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -21,6 +23,8 @@ export default function LogIn() {
       if (res.status === 200) {
         dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
         toast.success("Login successfull");
+        navigate("/");
+        window.location.reload();
       } else {
         toast.success("Credential Error");
       }

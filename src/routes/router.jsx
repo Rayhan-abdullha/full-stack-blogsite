@@ -8,7 +8,7 @@ import SinglePost from "../pages/singlePost/SinglePost";
 import NotFound from "../pages/notFound/NotFound";
 import { createBrowserRouter } from "react-router-dom";
 
-function routes(user = false) {
+function routes(user = {}) {
   const router = createBrowserRouter([
     { path: "/", element: <Home /> },
     { path: "contact", element: <Contact /> },
