@@ -1,8 +1,9 @@
-import React,{useContext, useRef} from 'react'
+import MainLayout from "../../layout/MainLayout";
+import React, { useContext, useRef } from "react";
 import "./logIn.css";
 import { Context } from "../../context/Contex";
-import { toast } from 'react-toastify';
-import { axiosInstance } from '../../config';
+import { toast } from "react-toastify";
+import { axiosInstance } from "../../config";
 
 export default function LogIn() {
   const userRef = useRef();
@@ -18,35 +19,37 @@ export default function LogIn() {
         password: passwordRef.current.value,
       });
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
-      toast.success("Login successfull")
+      toast.success("Login successfull");
     } catch (err) {
       dispatch({ type: "LOGIN_FAILURE" });
-      toast.error("Something went to wrong")
+      toast.error("Something went to wrong");
     }
   };
 
   return (
-    <div className="login">
-      <div className="registerWrapper">
-        <span className="loginTitle">Login</span>
-        <form onSubmit={handleSubmit} className="loginForm">
-          <label>Username</label>
-          <input 
-            className="loginInput" 
-            type="text" 
-            placeholder="Enter your username..." 
-            ref={userRef}
+    <MainLayout>
+      <div className="login">
+        <div className="registerWrapper">
+          <span className="loginTitle">Login</span>
+          <form onSubmit={handleSubmit} className="loginForm">
+            <label>Username</label>
+            <input
+              className="loginInput"
+              type="text"
+              placeholder="Enter your username..."
+              ref={userRef}
             />
-          <label>Password</label>
-          <input 
-            className="loginInput" 
-            type="password" 
-            placeholder="Enter your password..." 
-            ref={passwordRef}
+            <label>Password</label>
+            <input
+              className="loginInput"
+              type="password"
+              placeholder="Enter your password..."
+              ref={passwordRef}
             />
-          <button className="loginButton">Login</button>
-        </form>
+            <button className="loginButton">Login</button>
+          </form>
+        </div>
       </div>
-    </div>
+    </MainLayout>
   );
 }

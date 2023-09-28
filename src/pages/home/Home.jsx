@@ -4,6 +4,7 @@ import Posts from "../../compontents/posts/Posts";
 import { axiosInstance } from "../../config";
 import { Context } from "../../context/Contex";
 import Categories from "../../compontents/categories/Categories";
+import MainLayout from "../../layout/MainLayout";
 
 export default function Home() {
   const { dispatch, allPosts, isFetching } = useContext(Context);
@@ -26,7 +27,7 @@ export default function Home() {
     }
   }, []);
   return (
-    <React.Fragment>
+    <MainLayout>
       <Header />
       <div className="container home">
         <h2 className="posts_section">Read Posts</h2>
@@ -56,6 +57,6 @@ export default function Home() {
         )}
         {loading && <Posts />}
       </div>
-    </React.Fragment>
+    </MainLayout>
   );
 }

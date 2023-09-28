@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./register.css";
 import { toast } from "react-toastify";
 import { axiosInstance } from "../../config";
+import MainLayout from "./../../layout/MainLayout";
 
 export default function Register() {
   const [userName, setUserName] = useState("");
@@ -34,34 +35,36 @@ export default function Register() {
   };
 
   return (
-    <div className="register">
-      <div className="registerWrapper">
-        <span className="registerTitle">Register</span>
-        <form onSubmit={handleSubmit} className="registerForm">
-          <label>Username</label>
-          <input
-            className={`loginInput ${error && "errorMsg"}`}
-            type="text"
-            placeholder="Enter your username..."
-            onChange={(e) => setUserName(e.target.value)}
-          />
-          <label>Email</label>
-          <input
-            className={`loginInput ${error && "errorMsg"}`}
-            type="email"
-            placeholder="Enter your email..."
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <label>Password</label>
-          <input
-            className={`loginInput ${error && "errorMsg"}`}
-            type="password"
-            placeholder="Enter your password..."
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <button className="loginButton">Register</button>
-        </form>
+    <MainLayout>
+      <div className="register">
+        <div className="registerWrapper">
+          <span className="registerTitle">Register</span>
+          <form onSubmit={handleSubmit} className="registerForm">
+            <label>Username</label>
+            <input
+              className={`loginInput ${error && "errorMsg"}`}
+              type="text"
+              placeholder="Enter your username..."
+              onChange={(e) => setUserName(e.target.value)}
+            />
+            <label>Email</label>
+            <input
+              className={`loginInput ${error && "errorMsg"}`}
+              type="email"
+              placeholder="Enter your email..."
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <label>Password</label>
+            <input
+              className={`loginInput ${error && "errorMsg"}`}
+              type="password"
+              placeholder="Enter your password..."
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <button className="loginButton">Register</button>
+          </form>
+        </div>
       </div>
-    </div>
+    </MainLayout>
   );
 }

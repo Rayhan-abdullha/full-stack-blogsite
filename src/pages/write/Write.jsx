@@ -5,6 +5,7 @@ import { axiosInstance } from "../../config";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import shortid from "shortid";
+import MainLayout from "./../../layout/MainLayout";
 
 export default function Write() {
   const [title, setTitle] = useState("");
@@ -57,50 +58,52 @@ export default function Write() {
     setCategories(e.target.value);
   };
   return (
-    <div className="post-section">
-      <div className="wrapper">
-        <div className="title">Create your Blog</div>
-        <form onSubmit={handleSubmit}>
-          <div className="categorySelect">
-            <p>Rayhan Abdullah</p>
-            <select value={selected} onChange={handleChange} id="category">
-              <option value="others">others</option>
-              <option value="programming">programming</option>
-              <option value="music">music</option>
-              <option value="politics">politics</option>
-              <option value="movies">movies</option>
-            </select>
-          </div>
-          <div className="postInput">
-            <input
-              className="writeInput"
-              id="title"
-              autoFocus={true}
-              type="text"
-              placeholder="Write post title"
-              onChange={(e) => setTitle(e.target.value)}
-            />
-            <textarea
-              onChange={(e) => setDesc(e.target.value)}
-              name=""
-              id="description"
-              cols="30"
-              rows="10"
-              placeholder="Tell me somthig..."
-            ></textarea>
-          </div>
-          <div className="addImg">
-            <input
-              type="file"
-              className="postAvator"
-              onChange={(e) => setFile(e.target.files[0])}
-            />
-          </div>
-          <button className="submitBtn" type="submit">
-            Post
-          </button>
-        </form>
+    <MainLayout>
+      <div className="post-section">
+        <div className="wrapper">
+          <div className="title">Create your Blog</div>
+          <form onSubmit={handleSubmit}>
+            <div className="categorySelect">
+              <p>Rayhan Abdullah</p>
+              <select value={selected} onChange={handleChange} id="category">
+                <option value="others">others</option>
+                <option value="programming">programming</option>
+                <option value="music">music</option>
+                <option value="politics">politics</option>
+                <option value="movies">movies</option>
+              </select>
+            </div>
+            <div className="postInput">
+              <input
+                className="writeInput"
+                id="title"
+                autoFocus={true}
+                type="text"
+                placeholder="Write post title"
+                onChange={(e) => setTitle(e.target.value)}
+              />
+              <textarea
+                onChange={(e) => setDesc(e.target.value)}
+                name=""
+                id="description"
+                cols="30"
+                rows="10"
+                placeholder="Tell me somthig..."
+              ></textarea>
+            </div>
+            <div className="addImg">
+              <input
+                type="file"
+                className="postAvator"
+                onChange={(e) => setFile(e.target.files[0])}
+              />
+            </div>
+            <button className="submitBtn" type="submit">
+              Post
+            </button>
+          </form>
+        </div>
       </div>
-    </div>
+    </MainLayout>
   );
 }

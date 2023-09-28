@@ -1,6 +1,7 @@
 import React from "react";
 import { FaFacebook, FaGithub, FaTwitter, FaLinkedin } from "react-icons/fa";
-import './contact.css'
+import "./contact.css";
+import MainLayout from "../../layout/MainLayout";
 const contactInfo = [
   {
     name: "Facebook",
@@ -34,23 +35,28 @@ const contactInfo = [
 
 export default function Contact() {
   return (
-    <div className="container contact">
-      <div className="socialIcon">
-        <h3 className="mb-4">Stay Connected</h3>
-        {contactInfo.map((item, index) => (
-          <div key={index} style={{background: `${item.background}`, color: `${item.color}` }}>
-            <a
-              href={item.link}
-              target="_blank"
+    <MainLayout>
+      <div className="container contact">
+        <div className="socialIcon">
+          <h3 className="mb-4">Stay Connected</h3>
+          {contactInfo.map((item, index) => (
+            <div
+              key={index}
+              style={{
+                background: `${item.background}`,
+                color: `${item.color}`,
+              }}
             >
-              <i style={{color: `${item.color}`}} className="topIcon">
-                {item.icon}
-              </i>
-            </a>
-            <span>Follow Us</span>
-          </div>
-        ))}
+              <a href={item.link} target="_blank">
+                <i style={{ color: `${item.color}` }} className="topIcon">
+                  {item.icon}
+                </i>
+              </a>
+              <span>Follow Us</span>
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
+    </MainLayout>
   );
 }
