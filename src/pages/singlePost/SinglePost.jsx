@@ -11,7 +11,7 @@ export default function SinglePost() {
 
   const { allPosts } = useContext(Context);
 
-  const PF = "https://blog24-server-app.onrender.com/images/";
+  const PF = "https://blog-server-api-qr75.onrender.com/images/";
   useEffect(() => {
     let find = allPosts.find((post) => (post._id || post.newId) === path);
     setSinglePost(find);
@@ -25,8 +25,12 @@ export default function SinglePost() {
         />
       </div>
       <h1 className="mt-4">{singlePost?.title}</h1>
-      <p className="authorName mt-4">Author: <span className="singlePostAuthor">{singlePost.userName}</span></p>
-        <p className="mb-3">Topic: <span className="singlePostAuthor">{singlePost.categories}</span></p>
+      <p className="authorName mt-4">
+        Author: <span className="singlePostAuthor">{singlePost.userName}</span>
+      </p>
+      <p className="mb-3">
+        Topic: <span className="singlePostAuthor">{singlePost.categories}</span>
+      </p>
       <div className="post_info">
         <span className="postDate">
           {new Date(singlePost.createdAt).toDateString()}
@@ -34,9 +38,7 @@ export default function SinglePost() {
       </div>
       <hr />
       <div className="description mt-5">
-        <p>
-          {singlePost.desc}
-        </p>
+        <p>{singlePost.desc}</p>
       </div>
     </div>
   );

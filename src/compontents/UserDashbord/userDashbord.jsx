@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../../context/Contex";
 import { axiosInstance } from "../../config";
 import { toast } from "react-toastify";
-import './dashbord.css'
+import "./dashbord.css";
 const UserDashbord = () => {
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
@@ -11,13 +11,13 @@ const UserDashbord = () => {
   const { user, allPosts, dispatch } = useContext(Context);
   const handleDelete = async (id) => {
     try {
-      const allData = allPosts.filter(
-        (post) => (post._id || post.newId) !== id
-      );
-      dispatch({ type: "FETCH_POST", payload: allData });
       await axiosInstance.delete(`/posts/${id}`, {
         data: { userName: user.userName },
       });
+      const allData = allPosts.filter(
+        (post) => (post._id || post.newId) !== id
+      );
+      dispatch({ type: "DELETE_POST", payload: allData });
       toast.success("deleted post");
     } catch (err) {}
   };
@@ -46,7 +46,11 @@ const UserDashbord = () => {
               <p>{post.title}</p>
               <div className="editBtn">
                 {/* <button onClick={() => setUpdateMode(prev => !prev)}>Edit</button> */}
-                <button onClick={() => handleDelete(post._id ? (post._id) : (post.newId))}>Del</button>
+                <button
+                  onClick={() => handleDelete(post._id ? post._id : post.newId)}
+                >
+                  Del
+                </button>
               </div>
             </div>
           ))}

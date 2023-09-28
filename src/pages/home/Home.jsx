@@ -10,20 +10,20 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-      if (!isFetching){
-        const fetchPost = async () => {
-          try {
-            setLoading(true);
-            const res = await axiosInstance.get("/posts");
-            dispatch({ type: "FETCH_POST", payload: res.data });
-            setLoading(false);
-          } catch (e) {
-            setLoading(false);
-            dispatch({type: 'FETCH_FAIL'})
-          }
-        };
-        fetchPost();
-      }
+    if (!isFetching) {
+      const fetchPost = async () => {
+        try {
+          setLoading(true);
+          const res = await axiosInstance.get("/posts");
+          dispatch({ type: "FETCH_POST", payload: res.data });
+          setLoading(false);
+        } catch (e) {
+          setLoading(false);
+          dispatch({ type: "FETCH_FAIL" });
+        }
+      };
+      fetchPost();
+    }
   }, []);
   return (
     <React.Fragment>
@@ -54,9 +54,7 @@ export default function Home() {
             </button>
           </div>
         )}
-        {
-          loading && <Posts/>
-        }
+        {loading && <Posts />}
       </div>
     </React.Fragment>
   );

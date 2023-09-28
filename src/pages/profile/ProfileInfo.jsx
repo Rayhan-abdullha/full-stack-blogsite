@@ -1,17 +1,17 @@
-import React, {useContext, useState, useEffect} from 'react'
+import React, { useContext, useState, useEffect } from "react";
 import "./profile.css";
 import { Context } from "../../context/Contex";
-import profilePic from '../../imgaes/profile.jpg'
+import profilePic from "../../imgaes/profile.jpg";
 import { toast } from "react-toastify";
-import { axiosInstance } from '../../config';
+import { axiosInstance } from "../../config";
 
 export default function ProfileInfo() {
   const [file, setFile] = useState(null);
   const [userName, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const { user, dispatch } = useContext(Context);
-  const PF = "https://blog24-server-app.onrender.com/images/";
-  
+  const PF = "http://localhost:8000/images/";
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     dispatch({ type: "UPDATE_START" });
@@ -19,8 +19,8 @@ export default function ProfileInfo() {
       userId: user._id,
       userName: userName || user.userName,
       email: email || user.email,
-      profilePic: user.profilePic
-    }
+      profilePic: user.profilePic,
+    };
     if (file) {
       const data = new FormData();
       const filename = Date.now() + file.name;
@@ -30,16 +30,16 @@ export default function ProfileInfo() {
       try {
         await axiosInstance.post("/upload", data);
       } catch (err) {
-        toast.error("Bad user Credential")
+        toast.error("Bad user Credential");
       }
     }
     try {
       const res = await axiosInstance.put("/users/" + user._id, updatedUser);
       dispatch({ type: "UPDATE_SUCCESS", payload: res.data });
-      toast.success("Update successfully done!")
+      toast.success("Update successfully done!");
     } catch (err) {
       dispatch({ type: "UPDATE_FAILURE" });
-      toast.error("Bad user Credential")
+      toast.error("Bad user Credential");
     }
   };
   return (
@@ -52,7 +52,13 @@ export default function ProfileInfo() {
           <label>Profile Picture</label>
           <div className="profilePP">
             <img
-              src={file ? URL.createObjectURL(file) : user.profilePic ? (PF+user.profilePic) : (profilePic)}
+              src={
+                file
+                  ? URL.createObjectURL(file)
+                  : user.profilePic
+                  ? PF + user.profilePic
+                  : profilePic
+              }
               alt=""
             />
             <label htmlFor="fileInput">

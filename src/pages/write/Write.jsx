@@ -1,7 +1,6 @@
 import React, { useState, useContext } from "react";
 import "./write.css";
 import { Context } from "../../context/Contex";
-import photo from "../../imgaes/profile.jpg";
 import { axiosInstance } from "../../config";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
@@ -42,15 +41,13 @@ export default function Write() {
       }
     }
     try {
-      await dispatch({ type: "ADD_POST", payload: newPost });
       navigate("/");
       await axiosInstance.post("/posts", newPost);
+      await dispatch({ type: "ADD_POST", payload: newPost });
       toast.success("successfully post done!");
     } catch (err) {
       toast.error("Credential error");
-      const allData = allPosts.filter(
-        (post) => post._id !== newPost.newId
-      );
+      const allData = allPosts.filter((post) => post._id !== newPost.newId);
       dispatch({ type: "FETCH_POST", payload: allData });
       navigate("/write");
     }
