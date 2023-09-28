@@ -4,10 +4,6 @@ import { axiosInstance } from "../../config";
 import { toast } from "react-toastify";
 import "./dashbord.css";
 const UserDashbord = () => {
-  const [title, setTitle] = useState("");
-  const [desc, setDesc] = useState("");
-  const [updateMode, setUpdateMode] = useState(false);
-
   const { user, allPosts, dispatch } = useContext(Context);
   const handleDelete = async (id) => {
     try {
@@ -22,18 +18,6 @@ const UserDashbord = () => {
     } catch (err) {}
   };
 
-  const handleUpdate = async (id) => {
-    try {
-      await axiosInstance.put(`/posts/${id}`, {
-        userName: user.userName,
-        title,
-        desc,
-      });
-      setUpdateMode(false);
-    } catch (err) {
-      toast.error("something went to wrong");
-    }
-  };
   let posts = allPosts.filter((v) => v.userName === user.userName);
 
   return (
@@ -45,7 +29,6 @@ const UserDashbord = () => {
             <div key={post._id} className="dashbordPost">
               <p>{post.title}</p>
               <div className="editBtn">
-                {/* <button onClick={() => setUpdateMode(prev => !prev)}>Edit</button> */}
                 <button
                   onClick={() => handleDelete(post._id ? post._id : post.newId)}
                 >

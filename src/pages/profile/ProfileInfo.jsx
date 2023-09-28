@@ -10,7 +10,7 @@ export default function ProfileInfo() {
   const [userName, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const { user, dispatch } = useContext(Context);
-  const PF = "http://localhost:8000/images/";
+  const PF = "https://blog-server-api-qr75.onrender.com/images/";
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -34,7 +34,7 @@ export default function ProfileInfo() {
       }
     }
     try {
-      const res = await axiosInstance.put("/users/" + user._id, updatedUser);
+      const res = await axiosInstance.patch("/users/" + user._id, updatedUser);
       dispatch({ type: "UPDATE_SUCCESS", payload: res.data });
       toast.success("Update successfully done!");
     } catch (err) {

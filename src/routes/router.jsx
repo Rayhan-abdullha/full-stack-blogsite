@@ -19,7 +19,7 @@ function routes(user = false) {
     { path: "register", element: <Register /> },
     { path: "login", element: <LogIn /> },
     { path: "profile", element: user ? <Profile /> : <LogIn /> },
-    { path: "post/:id", element: user ? <SinglePost /> : <LogIn /> },
+    { path: "post/:id", element: <SinglePost /> },
     { path: "*", element: <NotFound /> },
   ]);
   return router;

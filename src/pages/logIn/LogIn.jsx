@@ -18,8 +18,12 @@ export default function LogIn() {
         userName: userRef.current.value,
         password: passwordRef.current.value,
       });
-      dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
-      toast.success("Login successfull");
+      if (res.status === 200) {
+        dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
+        toast.success("Login successfull");
+      } else {
+        toast.success("Credential Error");
+      }
     } catch (err) {
       dispatch({ type: "LOGIN_FAILURE" });
       toast.error("Something went to wrong");
