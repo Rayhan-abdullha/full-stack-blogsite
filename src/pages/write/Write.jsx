@@ -43,7 +43,9 @@ export default function Write() {
     }
     try {
       navigate("/");
-      await axiosInstance.post("/posts", newPost);
+      const res = await axiosInstance.post("/posts", newPost);
+      newPost._id = res?.data?.id;
+      newPost.newId = res?.data?.id;
       await dispatch({ type: "ADD_POST", payload: newPost });
       toast.success("successfully post done!");
     } catch (err) {

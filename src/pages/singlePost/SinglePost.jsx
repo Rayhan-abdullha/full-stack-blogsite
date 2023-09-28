@@ -14,17 +14,24 @@ export default function SinglePost() {
 
   const PF = "https://blog-server-api-qr75.onrender.com/images/";
   useEffect(() => {
-    let find = allPosts.find((post) => (post._id || post.newId) === id);
-    if (!find) {
+    // find method does not work, why i dont know,
+    for (let i = 0; i < allPosts.length; i++) {
+      if ((id, allPosts[i]._id)) {
+        find = allPosts[i];
+      }
+    }
+    if (find) {
+      setSinglePost({ ...find });
+    } else {
       const fetchPost = async () => {
         try {
-          const res = await axiosInstance.get(`/post/${id}`);
-          find = res.data;
+          const res = await axiosInstance.get(`/posts/${id}`);
+          find = res?.data?.data;
+          setSinglePost({ ...find });
         } catch (e) {}
       };
       fetchPost();
     }
-    setSinglePost(find);
   }, [id]);
   return (
     <MainLayout>
@@ -38,20 +45,20 @@ export default function SinglePost() {
         <h1 className="mt-4">{singlePost?.title}</h1>
         <p className="authorName mt-4">
           Author:{" "}
-          <span className="singlePostAuthor">{singlePost.userName}</span>
+          <span className="singlePostAuthor">{singlePost?.userName}</span>
         </p>
         <p className="mb-3">
           Topic:{" "}
-          <span className="singlePostAuthor">{singlePost.categories}</span>
+          <span className="singlePostAuthor">{singlePost?.categories}</span>
         </p>
         <div className="post_info">
           <span className="postDate">
-            {new Date(singlePost.createdAt).toDateString()}
+            {new Date(singlePost?.createdAt).toDateString()}
           </span>
         </div>
         <hr />
         <div className="description mt-5">
-          <p>{singlePost.desc}</p>
+          <p>{singlePost?.desc}</p>
         </div>
       </div>
     </MainLayout>
