@@ -16,8 +16,9 @@ export default function SinglePost() {
   useEffect(() => {
     // find method does not work, why i dont know,
     for (let i = 0; i < allPosts.length; i++) {
-      if ((id, allPosts[i]._id)) {
+      if (id === allPosts[i]._id) {
         find = allPosts[i];
+        break;
       }
     }
     if (find) {
