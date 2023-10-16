@@ -4,13 +4,14 @@ import { Context } from "../../context/Contex";
 import profilePic from "../../imgaes/profile.jpg";
 import { toast } from "react-toastify";
 import { axiosInstance } from "../../config";
+import axios from "axios";
+import { key } from "../../config/key";
 
 export default function ProfileInfo() {
   const [file, setFile] = useState(null);
   const [userName, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const { user, dispatch } = useContext(Context);
-  const PF = "https://blog-server-api-qr75.onrender.com/images/";
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -23,17 +24,15 @@ export default function ProfileInfo() {
     };
     if (file) {
       const data = new FormData();
-      const filename = Date.now() + file.name;
-      data.append("name", filename);
-      data.append("file", file);
-      updatedUser.profilePic = filename;
-      try {
-        await axiosInstance.post("/upload", data);
-      } catch (err) {
-        toast.error("Bad user Credential");
-      }
+      data.append("image", file);
+      const fileUpload = await axios.post(
+        `https://api.imgbb.com/1/upload?key=${key}`,
+        data
+      );
+      updatedUser.profilePic = fileUpload.data.data.display_url;
     }
     try {
+      console.log("update profile");
       const res = await axiosInstance.patch("/users/" + user._id, updatedUser);
       dispatch({ type: "UPDATE_SUCCESS", payload: res.data });
       toast.success("Update successfully done!");
@@ -51,16 +50,7 @@ export default function ProfileInfo() {
         <form className="profileForm" onSubmit={handleSubmit}>
           <label>Profile Picture</label>
           <div className="profilePP">
-            <img
-              src={
-                file
-                  ? URL.createObjectURL(file)
-                  : user.profilePic
-                  ? PF + user.profilePic
-                  : profilePic
-              }
-              alt=""
-            />
+            <img src={user.profilePic || profilePic} alt="notfound" />
             <label htmlFor="fileInput">
               <i className="profilePPIcon far fa-user-circle"></i>
             </label>

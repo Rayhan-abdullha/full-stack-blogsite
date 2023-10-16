@@ -9,26 +9,22 @@ export default function Posts() {
   const location = useLocation();
   let path = location.search;
   path = queryTransform(path);
-  let post = allPosts;
+  let posts = allPosts;
   if (path) {
-    let cat = post.filter((item) => item.categories == path);
-    let author = post.filter((item) => item.userName == path);
+    let cat = posts.filter((item) => item.categories == path);
+    let author = posts.filter((item) => item.userName == path);
     if (author.length) {
-      post = author;
+      posts = author;
     } else {
-      post = cat;
+      posts = cat;
     }
   }
 
   return (
     <div className="posts mb-5">
-      {post.length === 0 && (
-        <h4 className="empty_post">Empty! There Have No Posts!!</h4>
-      )}
+      {posts.length === 0 && <h4 className="empty_post">Empty Post List</h4>}
       {!error ? (
-        post.map((posts) => (
-          <Post key={posts._id || posts.newId} post={posts} />
-        ))
+        posts.map((post) => <Post key={post._id || posts.newId} post={post} />)
       ) : (
         <div className="networkIssue">
           <p className="d-block">Server Issues!</p>

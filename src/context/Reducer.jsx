@@ -8,6 +8,11 @@ const Reducer = (state, action) => {
         postData: [...action.payload, ...db],
         isFetching: true,
       };
+    case "Add_BLOG_FAIL":
+      return {
+        ...state,
+        postData: [...action.payload],
+      };
     case "DELETE_POST":
       return {
         ...state,

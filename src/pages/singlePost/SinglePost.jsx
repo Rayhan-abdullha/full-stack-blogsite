@@ -12,11 +12,10 @@ export default function SinglePost() {
   const id = location.pathname.split("/")[2];
   const { allPosts } = useContext(Context);
 
-  const PF = "https://blog-server-api-qr75.onrender.com/images/";
   useEffect(() => {
-    // find method does not work, why i dont know,
+    let find;
     for (let i = 0; i < allPosts.length; i++) {
-      if (id === allPosts[i]._id) {
+      if (id === allPosts[i]?._id) {
         find = allPosts[i];
         break;
       }
@@ -38,10 +37,7 @@ export default function SinglePost() {
     <MainLayout>
       <div className="container singlePost">
         <div className="post_img">
-          <img
-            src={singlePost?.photo ? PF + singlePost?.photo : blog}
-            alt="not found"
-          />
+          <img src={singlePost.photo || blog} alt="not found" />
         </div>
         <h1 className="mt-4">{singlePost?.title}</h1>
         <p className="authorName mt-4">

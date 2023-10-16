@@ -3,20 +3,13 @@ import "./post.css";
 import blog from "../../imgaes/blog.jpg";
 
 export default function Post({ post }) {
-  const PF = "https://blog-server-api-qr75.onrender.com/images/";
   return (
     <div className="post">
       <div className="postImages">
         {post.photo ? (
-          <img
-            className="postImg"
-            src={PF + post.photo ? PF + post.photo : blog}
-            alt=""
-          />
+          <img className="postImg" src={post.photo} alt="notfound" />
         ) : (
-          <div className="postImages">
-            <img className="postImg" src={blog} alt="not found" />
-          </div>
+          <img className="postImg" src={blog} alt="notfound" />
         )}
       </div>
       <div className="postInfo">

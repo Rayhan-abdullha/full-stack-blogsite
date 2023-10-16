@@ -4,54 +4,52 @@ import { Context } from "../../context/Contex";
 import { axiosInstance } from "../../config";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-import shortid from "shortid";
 import MainLayout from "./../../layout/MainLayout";
+import { key } from "./../../config/key";
+import axios from "axios";
+import { uniqueId } from "./../../utils/generateUinqueId";
 
 export default function Write() {
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
-  const navigate = useNavigate();
   const [categories, setCategories] = useState("");
   const [file, setFile] = useState(null);
   const [selected, setSelected] = useState("others");
 
+  const navigate = useNavigate();
   const { dispatch, user, allPosts } = useContext(Context);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const newPost = {
-      newId: shortid.generate(),
+      newId: uniqueId(),
       userName: user.userName,
       title,
       desc,
       photo: "",
       categories: categories || selected,
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString(),
     };
-    if (file) {
-      const data = new FormData();
-      const filename = Date.now() + file.name;
-      data.append("name", filename);
-      data.append("file", file);
-      newPost.photo = filename;
-      try {
-        await axiosInstance.post("/upload", data);
-      } catch (err) {
-        toast.error("Credential error");
-      }
-    }
+
     try {
       navigate("/");
+      if (file) {
+        const formData = new FormData();
+        formData.append("image", file);
+        const fileUpload = await axios.post(
+          `https://api.imgbb.com/1/upload?key=${key}`,
+          formData
+        );
+        newPost.photo = fileUpload.data.data.display_url;
+      }
       const res = await axiosInstance.post("/posts", newPost);
-      newPost._id = res?.data?.id;
-      newPost.newId = res?.data?.id;
-      await dispatch({ type: "ADD_POST", payload: newPost });
-      toast.success("successfully post done!");
+      console.log(res.data);
+      newPost.newId = res?.data?._id;
+      dispatch({ type: "ADD_POST", payload: newPost });
+      toast.success("New Blog Created");
     } catch (err) {
       toast.error("Credential error");
       const allData = allPosts.filter((post) => post._id !== newPost.newId);
-      dispatch({ type: "FETCH_POST", payload: allData });
+      dispatch({ type: "Add_BLOG_FAIL", payload: allData });
       navigate("/write");
     }
   };

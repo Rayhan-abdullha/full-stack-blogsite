@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import demoProfilePic from "../../imgaes/profile.jpg";
+import profilePic from "../../imgaes/profile.jpg";
 import { Context } from "../../context/Contex";
 import "./navbar.css";
 import { toast } from "react-toastify";
@@ -9,7 +9,6 @@ export default function Navbar() {
   const [show, setShow] = useState(true);
   const { user, dispatch } = useContext(Context);
 
-  const PF = "https://blog-server-api-qr75.onrender.com/images/";
   const handleLogOut = () => {
     dispatch({ type: "LOGOUT" });
     toast.success("Logout");
@@ -80,9 +79,7 @@ export default function Navbar() {
                 <Link to="/profile" onClick={showButton}>
                   <img
                     className="signInImg"
-                    src={
-                      user.profilePic ? PF + user.profilePic : demoProfilePic
-                    }
+                    src={user.profilePic || profilePic}
                     alt=""
                   />
                 </Link>
