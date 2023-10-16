@@ -22,13 +22,12 @@ export default function Posts() {
 
   return (
     <div className="posts mb-5">
-      {posts.length === 0 && <h4 className="empty_post">Empty Post List</h4>}
       {!error ? (
         posts.map((post) => <Post key={post._id || posts.newId} post={post} />)
       ) : (
         <div className="networkIssue">
-          <p className="d-block">Server Issues!</p>
-          <p className="d-block">Please Reload!</p>
+          <p className="d-block">Something went to wrong!</p>
+          <p className="d-block">Please Reload</p>
         </div>
       )}
     </div>

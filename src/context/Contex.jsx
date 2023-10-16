@@ -3,12 +3,11 @@ import { db } from "../db/db";
 import Reducer from "./Reducer";
 
 const INITIAL_STATE = {
-  postData: [],
+  postData: [...db],
   categorie: [],
   user: JSON.parse(localStorage.getItem("user")) || null,
   isFetching: false,
   error: false,
-  demo: [...db],
 };
 
 export const Context = createContext(INITIAL_STATE);
